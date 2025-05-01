@@ -12,6 +12,8 @@
   $query = $database->prepare( $sql );
   $query->execute();
   $todos = $query->fetchAll();
+
+  session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,6 +42,10 @@
     >
       <div class="card-body">
         <h3 class="card-title mb-3">My Todo List</h3>
+        <p>Hello, <?= $_SESSION["user"]["name"]; ?></p>
+          <div>
+            <a href="logout.php">Logout</a>
+          </div>
         <ul class="list-group">
         <?php foreach ($todos as $index => $todo) { ?>
           <li
